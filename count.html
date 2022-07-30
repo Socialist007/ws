@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品管理系统</title>
+    <!-- Base Styling  -->
+    <link rel="stylesheet" href="./bigWork/static/css/fonts.css">
+    <link rel="stylesheet" href="./bigWork/static/css/style.css">
+    <!--    jquery-->
+    <!-- JQuery v3.5.1 -->
+    <script src="./bigWork/static/js/jquery.min.js"></script>
+    <!--引入echart绘图组件-->
+    <script src="https://cdn.staticfile.org/echarts/4.5.0/echarts.min.js"></script>
+</head>
+
+<body>
+<!--第一阶段定义导航栏-->
+<div id="main-wrapper" class="show">
+    <div class="nav-header">
+        <div class="brand-logo">
+            <a href="index.html"> <img class="logo-tabib" src="./bigWork/images/goods.png" alt=""></a>
+            <a href="index.html"><img class="brand-title" style="height: 60px;width: 170px"
+                src="./img/购物.png" alt=""></a>
+        </div>
+    </div>
+    <!-- 第二阶段 设计当前增加商品的具体功能和展示页面-->
+    <div class="header">
+        <header class="top-head container-fluid">
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+                <div class="left-header content-header__menu">
+                    <ul class="list-unstyled">
+                        <li class="nav-link btn">
+                            <a href="booking.html"><i class="far fa-calendar-check"></i> <span> Go
+                                        Shopping</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="fullscreen notification_dropdown">
+                    <div class="full">
+                        <!--                        全屏操作-->
+                        <a class="text-dark" href="#####" onclick="javascript:toggleFullScreen()">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="notification_dropdown">
+                    <div class="cart-wrapper">
+                        <div class="cart-icon">
+                            <a class="cart-control" href="#####">
+                                <i class="fas fa-bell"></i>
+                                <div class="pulse-css"></div>
+                            </a>
+                        </div>
+                        <!--                        最右上角的通知和管理员设计-->
+                        <div class="cart-dropdown-form dropdown-container">
+                            <div class="form-content">
+                                <div class="widget-media main-scroll nicescroll-box">
+                                    <ul class="timeline">
+                                        <li>
+                                            <!--                                            下面主要是消息通知的设计相当于邮箱-->
+                                            <h6 class="mb-0">通知</h6>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/22</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2 media-info">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">你有一个新的包裹！</h6>
+                                                    <small class="d-block">2022/7/20</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2 media-success">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">流量统计有待查看！</h6>
+                                                    <small class="d-block">22022/7/27</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">你被好运砸中了！</h6>
+                                                    <small class="d-block">2022/6/30</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/2</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/1</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--                                打开所有通知-->
+                                <a class="all-notification btn btn-primary" href="######">
+                                    查看所有通知
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                下面是管理员界面的设计-->
+                <div class="my-account-wrapper">
+                    <div class="account-wrapper">
+                        <div class="account-control">
+                            <a class="login header-profile" href="#" title="Sign in">
+                                <div class="header-info">
+                                    <span>管理员</span>
+                                    <small>Admin</small>
+                                </div>
+                                <img src="./bigWork/images/兵长.jpg" alt="people">
+                            </a>
+                            <div class="account-dropdown-form dropdown-container">
+                                <div class="form-content">
+                                    <a href="#####">
+                                        <i class="far fa-user"></i>
+                                        <span class="ml-2" onclick="intronduce()">个人简介</span>
+                                    </a>
+                                    <a href="#####">
+                                        <i class="far fa-envelope"></i>
+                                        <span class="ml-2">邮箱</span>
+                                    </a>
+                                    <a href="index.html">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        <span class="ml-2">退出</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- 下面是数据分析操作，图表展示 -->
+    <div class="content-body">
+        <div class="warper container-fluid">
+            <div class="all-patients main_container">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4 class="text-primary">统计分析图</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="addGoods.html">返回主界面</a></li>
+                            <li class="breadcrumb-item active"><a href="search.html">商品订单分析图</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <!--                            绘图区域-->
+                            <label>商品库存<div style="width: 400px" ></div></label>
+                            <div id="main"  style="width: 400px;height: 350px;float:left">商品库存</div>
+
+                            <div id="chart"align="right" style="width: 400px;height: 350px;float:right">订单数量</div>
+                            <label>订单数量</label>
+                            <!--                                  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<!-- End  -->
+
+
+<!-- footer -->
+<div class="footer">
+    <div class="copyright">
+        <p class="mb-0" align="center">商品管理系统 &copy; 2022数据库原理实验四<a target="_blank" rel="noopener" href="#"></a></p>
+    </div>
+</div>
+<!-- footer -->
+
+
+</body>
+</html>
+<!--echart的使用-->
+<!--绘制一个柱形图-->
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    var myChart1= echarts.init(document.getElementById('chart'));
+    option = {
+        tooltip: {show: false},
+        grid: {left: 10, top: 10, bottom: 20, right: 10, containLabel: true},
+        xAxis: {
+            type: 'value',
+            boundaryGap: false,
+            max: 20, // Math.ceil(max / 4) * 5 || 10
+            axisLine: {show: true, lineStyle: {color: '#ccc'}},
+            axisTick: {show: false},
+            axisLabel: {color: '#999'},
+            splitLine: {lineStyle: {color: ['#CEEDFF'], type: [5, 8], dashOffset: 3}},
+        },
+        yAxis: {
+            type: 'category',
+            data: [
+                '西游记',
+                '水浒传',
+                '床',
+                '床帘',
+                '苹果',
+                '香蕉',
+                '榴莲',
+                '卫衣',
+                '短袖',
+                '牛仔裤',
+            ],
+            axisLine: {show: true, lineStyle: {color: '#ccc'}},
+            axisTick: {length: 3},
+            axisLabel: {fontSize: 14, color: '#666', margin: 16, padding: 0},
+            inverse: true,
+        },
+        series: [
+            {
+                name: '订单每月销售数量',
+                type: 'bar',
+                showBackground: true,
+                backgroundStyle: {color: 'rgba(82, 168, 255, 0.1)', borderRadius: [0, 8, 8, 0]},
+                itemStyle: {
+                    color: '#52A8FF',
+                    normal: {
+                        borderRadius: [0, 8, 8, 0],
+                        color: function (params) {
+                            // 定义一个颜色集合
+                            let colorList = [
+                                '#52A8FF',
+                                '#00B389',
+                                '#FFA940',
+                                '#FF5A57',
+                                '#29EFC4',
+                                '#F8AEA4',
+                                '#FFC53D',
+                                '#009982',
+                                '#C099FC',
+                                '#F5855F',
+                            ];
+                            // 对每个bar显示一种颜色
+                            return colorList[params.dataIndex];
+                        },
+                    },
+                },
+                barMaxWidth: 16,
+                label: {show: true, position: 'insideRight', offset: [-5, 2], color: '#fff'},
+                data: [20, 12, 12, 31, 12, 3, 19, 17, 6, 13],
+            },
+        ],
+    };
+    option1 = {
+        xAxis: {
+            type: 'category',
+            data: [
+                '2021-01',
+                '2021-02',
+                '2021-03',
+                '2021-04',
+                '2021-05',
+                '2021-06',
+                '2021-07',
+                '2022-01',
+                '2022-02',
+                '2022-03',
+                '2022-04',
+                '2022-05',
+                '2022-06',
+                '2022-07'
+            ]
+        },
+        yAxis: {
+            type: 'value'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        series: [
+            {
+                data: [120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130],
+                type: 'bar'
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+    myChart1.setOption(option1);
+    function intronduce()
+     {
+        alert("重庆交通大学--王松")
+     }
+
+</script>

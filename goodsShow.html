@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品卡片</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/index2.css">
+</head>
+<body>
+    <div class="container1">
+        <button class="btn">  <a href="addGoods.html">返回主界面</a> </button>
+        <button class="btn"> <a href="index.html">退出登录</a> </button>
+        <button class="btn" onclick="zan()" >求点赞</button>
+        <button class="btn" onclick="zan()">求分享</button>
+    </div>
+   
+    <div class="container">
+        <!-- https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80 -->
+        <div class="panel active" style="background-image:url('./img/原西游记.jpg')">
+            <h3>西游记</h3>
+        </div>
+        <!-- https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80 -->
+        <div class="panel" style="background-image:url('./img/水浒传.jpg')">
+            <h3>水浒传</h3>
+        </div>
+        <div class="panel" style="background-image:url('./img/宠物猫.jpg')">
+            <h3>宠物猫</h3>
+        </div>
+        <div class="panel" style="background-image:url('./img/苹果.jpg')">
+            <h3>每天一个苹果</h3>
+        </div>
+        <div class="panel" style="background-image:url('./img/超跑.jpg')">
+            <h3>超跑</h3>
+        </div>
+        <div class="panel" style="background-image:url('./img/二哈.jpg')">
+            <h3>二哈</h3>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+    <script>
+        function zan(){
+            alert("谢谢您的喜欢！")
+        }
+    </script>
+</body>
+</html>

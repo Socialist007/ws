@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品管理系统</title>
+    <!-- Base Styling  -->
+    <link rel="stylesheet" href="./bigWork/static/css/fonts.css">
+    <link rel="stylesheet" href="./bigWork/static/css/style.css">
+    <style>
+        .table1 {
+            border-right: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+            text-align: center;
+        }
+
+        .table1 th {
+            border-left: 1px solid #000000;
+            border-top: 1px solid #000000;
+        }
+
+        .table1 td {
+            border-left: 1px solid #000000;
+            border-top: 1px solid #000000;
+        }
+    </style>
+</head>
+
+<body>
+<!--第一阶段定义导航栏-->
+<div id="main-wrapper" class="show">
+    <div class="nav-header">
+        <div class="brand-logo">
+            <a href="index.html"> <img class="logo-tabib" src="./bigWork/images/goods.png" alt=""></a>
+            <a href="index.html"><img class="brand-title" style="height: 60px;width: 170px"
+                src="./img/购物.png" alt=""></a>
+        </div>
+    </div>
+    <aside class="left-panel nicescroll-box">
+        <nav class="navigation">
+            <ul class="list-unstyled main-menu">
+                <li class="has-submenu">
+                    <!-- 下面链接是主界面 -->
+                    <a href="index.html">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">主界面</span>
+                    </a>
+                </li>
+                <li class="has-submenu active">
+                    <a href="#####" class="has-arrow mm-collapsed">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">商品</span>
+                    </a>
+                    <ul class="list-unstyled mm-collapse">
+                        <li><a href="addGoods.html">增加商品</a></li>
+                        <li><a href="goodsShow.html">仓库</a></li>
+                        <li><a href="mod.html">商品模型</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="search.html" class="has-arrow mm-collapsed">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">查询</span>
+                    </a>
+                    <ul class="list-unstyled mm-collapse">
+                        <li><a href="search.html">商品查询</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="booking.html">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">订购</span>
+                    </a>
+                </li>
+                <li class="has-submenu">
+                    <a href="count.html">
+                        <i class="fas fa-chart-pie"></i>
+                        <span class="nav-label">统计分析</span>
+                    </a>
+                </li>
+                <li class="has-submenu">
+                    <a href="report-ws.html">
+                        <i class="fas fa-chart-pie"></i>
+                        <span class="nav-label">综合报告</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--        次一级的导航-->
+        <div class="sidebar-widgets">
+            <div class="top-sidebar box-shadow mx-25 m-b-30 p-b-20 text-center">
+                <a href="#####">
+                    <img src="./bigWork/images/R-C.jpg" class="side-img" alt="img">
+                </a>
+                <a href="#">
+                    <h4 class="text-primary mb-0">Go Shopping</h4>
+                </a>
+            </div>
+            <!--            最低层-->
+            <div class="copyright text-center">
+                <p class="mb-0">曙光-王松</p>
+                <p class="mb-0"> © 2022 </p>
+            </div>
+        </div>
+    </aside>
+    <!-- 第二阶段 设计当前增加商品的具体功能和展示页面-->
+    <div class="header">
+        <header class="top-head container-fluid">
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+                <div class="left-header content-header__menu">
+                    <ul class="list-unstyled">
+                        <li class="nav-link btn">
+                            <a href="booking.html"><i class="far fa-calendar-check"></i> <span> Go
+                                        Shopping</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="fullscreen notification_dropdown">
+                    <div class="full">
+                        <!--                        全屏操作-->
+                        <a class="text-dark" href="#####" onclick="javascript:toggleFullScreen()">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="notification_dropdown">
+                    <div class="cart-wrapper">
+                        <div class="cart-icon">
+                            <a class="cart-control" href="#####">
+                                <i class="fas fa-bell"></i>
+                                <div class="pulse-css"></div>
+                            </a>
+                        </div>
+                        <!--                        最右上角的通知和管理员设计-->
+                        <div class="cart-dropdown-form dropdown-container">
+                            <div class="form-content">
+                                <div class="widget-media main-scroll nicescroll-box">
+                                    <ul class="timeline">
+                                        <li>
+                                            <!--                                            下面主要是消息通知的设计相当于邮箱-->
+                                            <h6 class="mb-0">通知</h6>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/22</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2 media-info">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">你有一个新的包裹！</h6>
+                                                    <small class="d-block">2022/7/20</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2 media-success">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">流量统计有待查看！</h6>
+                                                    <small class="d-block">22022/7/27</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">你被好运砸中了！</h6>
+                                                    <small class="d-block">2022/6/30</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/2</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/1</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--                                打开所有通知-->
+                                <a class="all-notification btn btn-primary" href="######">
+                                    查看所有通知
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                下面是管理员界面的设计-->
+                <div class="my-account-wrapper">
+                    <div class="account-wrapper">
+                        <div class="account-control">
+                            <a class="login header-profile" href="#" title="Sign in">
+                                <div class="header-info">
+                                    <span>管理员</span>
+                                    <small>Admin</small>
+                                </div>
+                                <img src="./bigWork/images/兵长.jpg" alt="people">
+                            </a>
+                            <div class="account-dropdown-form dropdown-container">
+                                <div class="form-content">
+                                    <a href="#####">
+                                        <i class="far fa-user"></i>
+                                        <span class="ml-2" onclick="intronduce()">个人简介</span>
+                                    </a>
+                                    <a href="#####">
+                                        <i class="far fa-envelope"></i>
+                                        <span class="ml-2">邮箱</span>
+                                    </a>
+                                    <a href="index.html">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        <span class="ml-2">退出</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- 下面是商品仓库中的查询操作 -->
+    <div class="content-body">
+        <div class="warper container-fluid">
+            <div class="all-patients main_container">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4 class="text-primary">商品仓库</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">返回主界面</a></li>
+                            <li class="breadcrumb-item active"><a href="search.html" >商品仓库</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header fix-card">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h4 class="card-title"> 所有商品 </h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class="display nowrap">
+                                        <thead>
+                                        <tr>
+                                            <th>商品图片</th>
+                                            <th>商品名称</th>
+                                            <th>商品代码</th>
+                                            <th></th>
+                                            <th>商品类别</th>
+                                            <th></th>
+                                            <th>供应商名称</th>
+                                            <th>库存</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/苹果.jpg"
+                                                     alt=""></td>
+                                            <td>苹果</td>
+                                            <td>232</td>
+                                            <td></td>
+                                            <td>水果</td>
+                                            <td></td>
+                                            <td>美的</td>
+                                            <td>200</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/香蕉.jpg"
+                                                     alt=""></td>
+                                            <td>香蕉</td>
+                                            <td>230</td>
+                                            <td></td>
+                                            <td>水果</td>
+                                            <td></td>
+                                            <td>美的</td>
+                                            <td>200</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/榴莲.jpg"
+                                                     alt=""></td>
+                                            <td>榴莲</td>
+                                            <td>236</td>
+                                            <td></td>
+                                            <td>水果</td>
+                                            <td></td>
+                                            <td>美的</td>
+                                            <td>200</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/床.jpg"
+                                                     alt=""></td>
+                                            <td>床</td>
+                                            <td>245</td>
+                                            <td></td>
+                                            <td>家具</td>
+                                            <td></td>
+                                            <td>爱尔兰</td>
+                                            <td>300</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/床帘.jpg"
+                                                     alt=""></td>
+                                            <td>床帘</td>
+                                            <td>249</td>
+                                            <td></td>
+                                            <td>家具</td>
+                                            <td></td>
+                                            <td>爱尔兰</td>
+                                            <td>100</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/沙发.jpg"
+                                                     alt=""></td>
+                                            <td>沙发</td>
+                                            <td>248</td>
+                                            <td></td>
+                                            <td>家具</td>
+                                            <td></td>
+                                            <td>爱尔兰</td>
+                                            <td>300</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/衣服.jpg"
+                                                     alt=""></td>
+                                            <td>衣服</td>
+                                            <td>256</td>
+                                            <td></td>
+                                            <td>服装</td>
+                                            <td></td>
+                                            <td>九月</td>
+                                            <td>600</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/牛仔裤.jpg"
+                                                     alt=""></td>
+                                            <td>牛仔裤</td>
+                                            <td>250</td>
+                                            <td></td>
+                                            <td>服装</td>
+                                            <td></td>
+                                            <td>九月</td>
+                                            <td>950</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/手镯.jpg.crdownload"
+                                                     alt=""></td>
+                                            <td>手镯</td>
+                                            <td>278</td>
+                                            <td></td>
+                                            <td>首饰</td>
+                                            <td></td>
+                                            <td>Lina</td>
+                                            <td>60</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/西游记.jpg"
+                                                     alt=""></td>
+                                            <td>西游记</td>
+                                            <td>286</td>
+                                            <td></td>
+                                            <td>书籍</td>
+                                            <td></td>
+                                            <td>五颗</td>
+                                            <td>6001</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/水浒传.jpg"
+                                                     alt=""></td>
+                                            <td>水浒传</td>
+                                            <td>286</td>
+                                            <td></td>
+                                            <td>服装</td>
+                                            <td></td>
+                                            <td>九月</td>
+                                            <td>6010</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+<!--                                                下面只写了删除，查看和修改都没写，要考试了-->
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/短袖.jpg"
+                                                     alt=""></td>
+                                            <td>短袖</td>
+                                            <td>226</td>
+                                            <td></td>
+                                            <td>服装</td>
+                                            <td></td>
+                                            <td>九月</td>
+                                            <td>620</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle" width="35" src="./img/卫衣.jpg"
+                                                     alt=""></td>
+                                            <td>卫衣</td>
+                                            <td>276</td>
+                                            <td></td>
+                                            <td>服装</td>
+                                            <td></td>
+                                            <td>九月</td>
+                                            <td>600</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class='mr-4 vue'>
+                                                    <span class='fa fa-eye' aria-hidden='true'></span>
+                                                </a>
+                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                                <a class='mr-4 delet'>
+                                                    <span class='fas fa-trash-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End  -->
+
+
+    <!-- start  footer -->
+    <div class="footer">
+        <div class="copyright">
+            <p class="mb-0">商品管理系统 &copy; 2022数据库原理实验四<a target="_blank" rel="noopener" href="#"></a></p>
+        </div>
+    </div>
+    <!-- End  footer -->
+
+
+</div>
+
+<!-- JQuery v3.5.1 -->
+<script src="./bigWork/static/js/jquery.min.js"></script>
+
+<!-- popper js -->
+<script src="./bigWork/static/js/popper.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="./bigWork/static/js/bootstrap.min.js"></script>
+
+<!-- Moment -->
+<script src="./bigWork/static/js/moment.min.js"></script>
+
+<!-- Date Range Picker -->
+<script src="./bigWork/static/js/daterangepicker.min.js"></script>
+
+<!-- Datatable -->
+<script src="./bigWork/static/js/jquery.dataTables.min.js"></script>
+<script src="./bigWork/static/js/init-tdatatable.js"></script>
+
+<!-- Main Custom JQuery -->
+<script src="./bigWork/static/js/toggleFullScreen.js"></script>
+<script src="./bigWork/static/js/main.js"></script>
+
+</body>
+
+</html>
+<script>
+    $(function () {
+    //    加载数据库商品和供应商的数据
+        //    获取前端页面商品供应商的信息
+        var supplierName = $("#supplierName").val();
+        var supplierCode = $("#supplierCode").val();
+        var contactPerson = $("#contactPerson").val();
+        var phone = $("#phone").val();
+        var supplierMessage = $("#supplierMessage").val();
+        $.ajax({
+            type: "get",
+            url: "searchServlet",
+            dataType:"json",
+            data: {
+                "supplierName": supplierName,
+                "supplierCode": supplierCode,
+                "contactPerson": contactPerson,
+                "phone": phone,
+                "supplierMessage": supplierMessage,
+                "bookCode":parseInt(Math.random()*(10000-100)+100)//生成 [n,m)，包含n但不包含m的正整数：
+            },
+            success: function (data) {
+
+            }
+
+        })
+
+    })
+    function intronduce()
+     {
+        alert("重庆交通大学--王松")
+     }
+</script>

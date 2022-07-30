@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品管理系统</title>
+    <!-- Base Styling  -->
+    <link rel="stylesheet" href="./bigWork/static/css/fonts.css">
+    <link rel="stylesheet" href="./bigWork/static/css/style.css">
+    <style>
+        .table1 {
+            border-right: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+            text-align: center;
+        }
+
+        .table1 th {
+            border-left: 1px solid #000000;
+            border-top: 1px solid #000000;
+        }
+
+        .table1 td {
+            border-left: 1px solid #000000;
+            border-top: 1px solid #000000;
+        }
+    </style>
+</head>
+
+<body>
+<!--第一阶段定义导航栏-->
+<div id="main-wrapper" class="show">
+    <div class="nav-header">
+        <div class="brand-logo">
+            <a href="index.html"> <img class="logo-tabib" src="./bigWork/images/goods.png" alt=""></a>
+            <a href="index.html"><img class="brand-title" style="height: 60px;width: 170px"
+                src="./img/购物.png" alt=""></a>
+        </div>
+    </div>
+    <aside class="left-panel nicescroll-box">
+        <nav class="navigation">
+            <ul class="list-unstyled main-menu">
+                <li class="has-submenu">
+                    <!-- 下面链接是主界面 -->
+                    <a href="index.html">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">主界面</span>
+                    </a>
+                </li>
+                <li class="has-submenu active">
+                    <a href="#####" class="has-arrow mm-collapsed">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">商品</span>
+                    </a>
+                    <ul class="list-unstyled mm-collapse">
+                        <li><a href="addGoods.html">增加商品</a></li>
+                        <li><a href="goodsShow.html">仓库</a></li>
+                        <li><a href="mod.html">商品模型</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="search.html" class="has-arrow mm-collapsed">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">查询</span>
+                    </a>
+                    <ul class="list-unstyled mm-collapse">
+                        <li><a href="search.html">商品查询</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="booking.html">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">订购</span>
+                    </a>
+                </li>
+                <li class="has-submenu">
+                    <a href="count.html">
+                        <i class="fas fa-chart-pie"></i>
+                        <span class="nav-label">统计分析</span>
+                    </a>
+                </li>
+                <li class="has-submenu">
+                    <a href="report-ws.html">
+                        <i class="fas fa-chart-pie"></i>
+                        <span class="nav-label">综合报告</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--        次一级的导航-->
+        <div class="sidebar-widgets">
+            <div class="top-sidebar box-shadow mx-25 m-b-30 p-b-20 text-center">
+                <a href="#####">
+                    <img src="./bigWork/images/R-C.jpg" class="side-img" alt="img">
+                </a>
+                <a href="#">
+                    <h4 class="text-primary mb-0">Go Shopping</h4>
+                </a>
+            </div>
+            <!--            最低层-->
+            <div class="copyright text-center">
+                <p class="mb-0">曙光-王松</p>
+                <p class="mb-0"> © 2022 </p>
+            </div>
+        </div>
+    </aside>
+    <!-- 第二阶段 设计当前增加商品的具体功能和展示页面-->
+    <div class="header">
+        <header class="top-head container-fluid">
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+                <div class="left-header content-header__menu">
+                    <ul class="list-unstyled">
+                        <li class="nav-link btn">
+                            <a href="booking.html"><i class="far fa-calendar-check"></i> <span> Go
+                                        Shopping</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="fullscreen notification_dropdown">
+                    <div class="full">
+<!--                        全屏操作-->
+                        <a class="text-dark" href="#####" onclick="javascript:toggleFullScreen()">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="notification_dropdown">
+                    <div class="cart-wrapper">
+                        <div class="cart-icon">
+                            <a class="cart-control" href="#####">
+                                <i class="fas fa-bell"></i>
+                                <div class="pulse-css"></div>
+                            </a>
+                        </div>
+                        <!--                        最右上角的通知和管理员设计-->
+                        <div class="cart-dropdown-form dropdown-container">
+                            <div class="form-content">
+                                <div class="widget-media main-scroll nicescroll-box">
+                                    <ul class="timeline">
+                                        <li>
+                                            <!--                                            下面主要是消息通知的设计相当于邮箱-->
+                                            <h6 class="mb-0">通知</h6>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/22</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2 media-info">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">你有一个新的包裹！</h6>
+                                                    <small class="d-block">2022/7/20</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2 media-success">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">流量统计有待查看！</h6>
+                                                    <small class="d-block">22022/7/27</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">你被好运砸中了！</h6>
+                                                    <small class="d-block">2022/6/30</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/2</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/1</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+<!--                                打开所有通知-->
+                                <a class="all-notification btn btn-primary" href="######">
+                                    查看所有通知
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                下面是管理员界面的设计-->
+                <div class="my-account-wrapper">
+                    <div class="account-wrapper">
+                        <div class="account-control">
+                            <a class="login header-profile" href="#" title="Sign in">
+                                <div class="header-info">
+                                    <span>管理员</span>
+                                    <small>Admin</small>
+                                </div>
+                                <img src="./bigWork/images/兵长.jpg" alt="people">
+                            </a>
+                            <div class="account-dropdown-form dropdown-container">
+                                <div class="form-content">
+                                    <a href="#####">
+                                        <i class="far fa-user"></i>
+                                        <span class="ml-2" onclick="intronduce()">个人简介</span>
+                                    </a>
+                                    <a href="#####">
+                                        <i class="far fa-envelope"></i>
+                                        <span class="ml-2">邮箱</span>
+                                    </a>
+                                    <a href="index.html">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        <span class="ml-2">退出</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+<!--具体实现增加商品的功能-->
+    <div class="content-body">
+        <div class="warper container-fluid">
+            <div class="new_appointment main_container">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4 class="text-primary">新的订单</h4>
+                            <p class="mb-0">增添新订单</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="addGoods.html">返回主界面</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:;">新的订单</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card shadow">
+                            <div class="card-header">
+                                <div class="row m-rl w-100">
+                                    <div class="col-lg-3 col-sm-12">
+                                        <div class="form-group">
+                                            <input id="myInputTextField" class="form-control" type="search"
+                                                   placeholder="根据客户姓名或地址查询订单" aria-label="Search">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <div class="form-group">
+                                            <select class="form-control table-filter-select form-select">
+                                                <option>根据客户地址查询</option>
+                                                <option>0700</option>
+                                                <option>0800</option>
+                                                <option>1100</option>
+                                                <option>1130</option>
+                                                <option>1030</option>
+                                                <option>1000</option>
+                                                <option>0900</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <div class="form-group">
+                                            <input id="daterange" class="form-control input-daterange-datepicker">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-primary w-100 h-56"
+                                                    data-bs-toggle="modal" data-bs-target="#newAppointment">
+                                                订购新订单
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example3" class="display nowrap">
+                                        <thead>
+                                        <tr>
+                                            <th>订单编号</th>
+                                            <th>订购时间</th>
+                                            <th>客户姓名</th>
+                                            <th>客户地址</th>
+                                            <th>订购总金额</th>
+                                            <th>订购状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                0700
+                                            </td>
+                                            <td>2021/4/5</td>
+                                            <td> 鼠</td>
+                                            <td> 中国重庆</td>
+                                            <td>8100</td>
+                                            <td class="text-start">
+                                                <span class="badge badge-primary">分拣中</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                0730
+                                            </td>
+                                            <td>2022/8/9</td>
+                                            <td> 虎</td>
+                                            <td>关中</td>
+                                            <td>8300</td>
+                                            <td class="text-start"> <span class="badge badge-primary">
+                                                        分拣中</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                0800
+                                            </td>
+                                            <td>2025/9/9</td>
+                                            <td> 蛇</td>
+                                            <td>重庆</td>
+                                            <td>833100</td>
+                                            <td class="text-start"> <span class="badge badge-primary">派送中</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                0830
+                                            </td>
+                                            <td>2021/3/5</td>
+                                            <td> 猫</td>
+                                            <td>北京</td>
+                                            <td>83100</td>
+                                            <td class="text-start"><span class="badge btn-danger">取消订单</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                0900
+                                            </td>
+                                            <td>2021/5/6</td>
+                                            <td> 猪 </td>
+                                            <td>湖北</td>
+                                            <td>83844</td>
+                                            <td class="text-start"> <span class="badge badge-primary">派送中</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                0930
+                                            </td>
+                                            <td>2024/9/7</td>
+                                            <td>马</td>
+                                            <td>河套</td>
+                                            <td>83</td>
+                                            <td class="text-start"> <span class="badge badge-primary">已派送</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 1000</td>
+                                            <td>2023/10/8</td>
+                                            <td>羊</td>
+                                            <td>贵州</td>
+                                            <td>8</td>
+                                            <td class="text-start"> <span class="badge badge-primary">分拣中</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 1030</td>
+                                            <td>2021/6/7</td>
+                                            <td>狗</td>
+                                            <td>重庆</td>
+                                            <td>100</td>
+                                            <td class="text-start"><span class="badge btn-danger">已取消</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 1100</td>
+                                            <td>2021/12/3</td>
+                                            <td>龙</td>
+                                            <td>秦</td>
+                                            <td>100</td>
+                                            <td class="text-start"> <span class="badge badge-primary">派送中</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 1130</td>
+                                            <td>2021/11/12</td>
+                                            <td>兔</td>
+                                            <td>上海</td>
+                                            <td>844</td>
+                                            <td class="text-start"> <span class="badge badge-primary">分拣中</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 0900</td>
+                                            <td>2023/06/18</td>
+                                            <td> 鸡</td>
+                                            <td>东莞</td>
+                                            <td>83</td>
+                                            <td class="text-start"> <span class="badge badge-primary">分拣中</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 0900</td>
+                                            <td>2021/2/4</td>
+                                            <td> 牛</td>
+                                            <td>湖北</td>
+                                            <td>833</td>
+                                            <td class="text-start"><span class="badge btn-danger">已取消</span>
+                                            </td>
+                                            <td>
+                                                <a class='mr-4 vue' data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModalCenter">
+                                                    <span class='fas fa-user' aria-hidden='true'></span>
+                                                </a>
+                                                <a class='edit' data-bs-toggle='modal'
+                                                   data-bs-target='#changeTimeAndDate'>
+                                                    <span class='fas fa-pencil-alt'></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End section content -->
+
+
+    <!-- start section footer -->
+    <div class="footer">
+        <div class="copyright">
+            <p class="mb-0">商品管理系统 &copy; 2022数据库原理实验四<a target="_blank" rel="noopener" href="#"></a></p>
+        </div>
+    </div>
+    <!-- End section footer -->
+
+
+    <!-- Modal  -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="modal-title-head-modal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title-head-modal">订单</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>订单详情</h5>
+                    <p>
+                        无
+                    </p>
+                    <hr>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="changeTimeAndDate" tabindex="-1" role="dialog" aria-labelledby="modal-title-edit-modal">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title-edit-modal"><img class="rounded-circle" width="35"
+                                                                             src="static/picture/user1.jpg" alt=""> 客户编辑
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row align-items-start">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input class="form-control" type="text" value="客户姓名">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input class="form-control" type="text" value="客户地址">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+                    <button type="button" class="btn badge-primary"onclick="savebooking()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade selectRefresh" id="newAppointment" tabindex="-1" aria-labelledby="exampleModalLabelOne">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelOne">新订单</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col form-group">
+                        <input style="width: 750px;height: 70px" type="text" value="客户姓名" id="customerName">
+                    </div>
+                    <div class="col form-group">
+                        <input style="width: 750px;height: 70px" type="text" value="客户地址" id="customerAddress">
+                    </div>
+                    <div class="col form-group"><input type="date" style="width: 750px;height: 70px" name="start_time"
+                                                       value="2022/06/22" height="200" id="backdated"></div>
+
+
+                    <div>
+                        <label>购物清单</label>
+                        <table id="tb1" align="center" width="500" cellspacing="0" class=".table1">
+                            <thead>
+                            <tr>
+                                <th class="table1 th">商品名称</th>
+                                <th class="table1 th">商品品牌</th>
+                                <th class="table1 th">商品规格</th>
+                                <th class="table1 th">商品数量</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td contentEditable='true' class="table1 td"></td>
+                                <td contentEditable='true' class="table1 td" class="table1 td" class="table1 td"
+                                    class="table1 td" class="table1 td" class="table1 td"></td>
+                                <td contentEditable='true' class="table1 td" class="table1 td" class="table1 td"
+                                    class="table1 td" class="table1 td"></td>
+                                <td contentEditable='true' class="table1 td" class="table1 td" class="table1 td"
+                                    class="table1 td"></td>
+
+                            </tr>
+                            <tr>
+                                <td contentEditable='true' class="table1 td" class="table1 td" class="table1 td"></td>
+                                <td contentEditable='true' class="table1 td" class="table1 td"></td>
+                                <td contentEditable='true' class="table1 td"></td>
+                                <td contentEditable='true' class="table1 td"></td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+                    <button type="button" class="btn badge-primary" id="add">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Modal  -->
+
+</div>
+<script src="./js/jQuery-2.1.4.min.js"></script>
+<!-- popper js -->
+<script src="./bigWork/static/js/popper.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="./bigWork/static/js/bootstrap.min.js"></script>
+
+<!-- Moment -->
+<script src="./bigWork/static/js/moment.min.js"></script>
+
+<!-- Date Range Picker -->
+<script src="./bigWork/static/js/daterangepicker.min.js"></script>
+
+<!-- Datatable -->
+<script src="./bigWork/static/js/jquery.dataTables.min.js"></script>
+<script src="./bigWork/static/js/init-tdatatable.js"></script>
+
+<!-- Main Custom JQuery -->
+<script src="./bigWork/static/js/toggleFullScreen.js"></script>
+<script src="./bigWork/static/js/main.js"></script>
+
+<!--下面是利用ajax传递数据给后台-->
+<script>
+    function savebooking()
+    {
+        alert("保存成功！")
+    }
+    $(function () {
+            $("#add").click(function () {
+               alert("目前为静态页面的添加")
+                var customerName = $("#customerName").val();
+
+                var customerAddress = $("#customerAddress").val();
+                var bookDate = $("#backdated").val();
+                var da = [];
+                var d = 0;
+                var tab = document.getElementById("tb1");
+                var rows = tab.rows;
+                for (var i = 1; i < rows.length; i++) { //遍历表格的行
+                    for (var j = 0; j < rows[i].cells.length; j++) {  //遍历每行的列
+                        da[d] = rows[i].cells[j].innerHTML
+                        d++;
+                    }
+                }
+
+                $.ajax({
+                    type:"post",
+                    url:"addBookingServlet",
+                    dataType:"json",
+                    data: {
+                        "customerName": customerName,
+                        "customerAddress": customerAddress,
+                        "bookDate": bookDate,
+                        "goodsName": da[0],
+                        "brandName": da[1],
+                        "goodsSize": da[2],
+                        "goodsNumber": da[3],
+                        "bookCode":parseInt(Math.random()*(10000-100)+100)//生成 [n,m)，包含n但不包含m的正整数：
+                    },
+                    success: function (data) {
+                        //data就是我们在servelet中定义的o
+                        if (data.code == "ok") {
+                            alert("添加成功！");
+                            location.href = "booking.html";
+                        } else {
+                            alert("添加失败！请重试");
+                        }
+                    }
+
+                })
+
+            })
+
+    });
+    function intronduce()
+     {
+        alert("重庆交通大学--王松")
+     }
+</script>
+
+

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>商品管理系统</title>
+        <!-- 基本样式  -->
+        <link rel="stylesheet" href="./bigWork/static/css/fonts.css">
+        <link rel="stylesheet" href="./bigWork/static/css/style.css">
+    </head>
+
+    <body>
+    <!--第一阶段定义导航栏-->
+    <div id="main-wrapper" class="show">
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="index.html"> <img class="logo-tabib" src="./bigWork/images/goods.png" alt=""></a>
+                <a href="index.html"><img class="brand-title" style="height: 60px;width: 170px"
+                                          src="./img/购物.png" alt=""></a>
+            </div>
+        </div>
+        <aside class="left-panel nicescroll-box">
+            <nav class="navigation">
+                <ul class="list-unstyled main-menu">
+                    <li class="has-submenu">
+                        <!-- 下面链接是主界面 -->
+                        <a href="index.html">
+                            <i class="fas fa-th-large"></i>
+                            <span class="nav-label">主界面</span>
+                        </a>
+                    </li>
+                    <li class="has-submenu active">
+                        <a href="#####" class="has-arrow mm-collapsed">
+                            <i class="fas fa-th-large"></i>
+                            <span class="nav-label">商品</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="addGoods.html">增加商品</a></li>
+                            <li><a href="goodsShow.html">仓库</a></li>
+                            <li><a href="mod.html">商品模型</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="search.html" class="has-arrow mm-collapsed">
+                            <i class="fas fa-th-large"></i>
+                            <span class="nav-label">查询</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="search.html">商品查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="booking.html">
+                            <i class="fas fa-th-large"></i>
+                            <span class="nav-label">订购</span>
+                        </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="count.html">
+                            <i class="fas fa-chart-pie"></i>
+                            <span class="nav-label">统计分析</span>
+                        </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="report-ws.html">
+                            <i class="fas fa-chart-pie"></i>
+                            <span class="nav-label">综合报告</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!--        次一级的导航-->
+            <div class="sidebar-widgets">
+                <div class="top-sidebar box-shadow mx-25 m-b-30 p-b-20 text-center">
+                    <a href="#####">
+                        <img src="./bigWork/images/R-C.jpg" class="side-img" alt="img">
+                    </a>
+                    <a href="#">
+                        <h4 class="text-primary mb-0">Go Shopping</h4>
+                    </a>
+                </div>
+                <!--            最低层-->
+                <div class="copyright text-center">
+                    <p class="mb-0">曙光-王松</p>
+                    <p class="mb-0"> © 2022 </p>
+                </div>
+            </div>
+        </aside>
+    <!-- 第二阶段 设计当前增加商品的具体功能和展示页面-->
+    <div class="header">
+        <header class="top-head container-fluid">
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+                <div class="left-header content-header__menu">
+                    <ul class="list-unstyled">
+                        <li class="nav-link btn">
+                            <a href="booking.html"><i class="far fa-calendar-check"></i> <span> Go
+                                        Shopping</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="fullscreen notification_dropdown">
+                    <div class="full">
+                        <!--                        全屏操作-->
+                        <a class="text-dark" href="#####" onclick="javascript:toggleFullScreen()">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="notification_dropdown">
+                    <div class="cart-wrapper">
+                        <div class="cart-icon">
+                            <a class="cart-control" href="#####">
+                                <i class="fas fa-bell"></i>
+                                <div class="pulse-css"></div>
+                            </a>
+                        </div>
+                        <!--                        最右上角的通知和管理员设计-->
+                        <div class="cart-dropdown-form dropdown-container">
+                            <div class="form-content">
+                                <div class="widget-media main-scroll nicescroll-box">
+                                    <ul class="timeline">
+                                        <li>
+                                            <!--                                            下面主要是消息通知的设计相当于邮箱-->
+                                            <h6 class="mb-0">通知</h6>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/22</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2 media-info">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">你有一个新的包裹！</h6>
+                                                    <small class="d-block">2022/7/20</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2 media-success">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">流量统计有待查看！</h6>
+                                                    <small class="d-block">22022/7/27</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">你被好运砸中了！</h6>
+                                                    <small class="d-block">2022/6/30</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/2</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media mr-2">
+                                                    <img alt="image" src="./bigWork/images/notice.jpg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 ">你有一个新的订单！</h6>
+                                                    <small class="d-block">2022/7/1</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--                                打开所有通知-->
+                                <a class="all-notification btn btn-primary" href="######">
+                                    查看所有通知
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                下面是管理员界面的设计-->
+                <div class="my-account-wrapper">
+                    <div class="account-wrapper">
+                        <div class="account-control">
+                            <a class="login header-profile" href="#" title="Sign in">
+                                <div class="header-info">
+                                    <span>管理员</span>
+                                    <small>Admin</small>
+                                </div>
+                                <img src="./bigWork/images/兵长.jpg" alt="people">
+                            </a>
+                            <div class="account-dropdown-form dropdown-container">
+                                <div class="form-content">
+                                    <a href="#####">
+                                        <i class="far fa-user"></i>
+                                        <span class="ml-2" onclick="intronduce()">个人简介</span>
+                                    </a>
+                                    <a href="#####">
+                                        <i class="far fa-envelope"></i>
+                                        <span class="ml-2">邮箱</span>
+                                    </a>
+                                    <a href="index.html">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        <span class="ml-2">退出</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!--   第三阶段 增加商品功能的具体实现-->
+    <div class="content-body">
+        <div class="warper container-fluid">
+            <div class="new-patients main_container">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4 class="text-primary">Add new goods</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">返回主页面</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:;">增加新商品</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <!--                商品信息的增加-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">商品信息</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <div class="form-group row widget-3">
+                                                    <div class="col-lg-10">
+                                                        <div class="form-input">
+                                                            <label class="labeltest" for="file-ip-1">
+                                                                <span> 点击上传商品图片</span>
+                                                            </label>
+                                                            <input type="file" id="file-ip-1" accept="image/*"
+                                                                   onchange="showPreview(event);">
+                                                            <div class="preview">
+                                                                <img id="file-ip-1-preview"
+                                                                     src="#####"
+                                                                     alt="img">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--                                            商品具体信息的录入-->
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <input id="goodsName" class="form-control" placeholder="商品名称">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="brandName" class="form-control" placeholder="品牌名称">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="form-control" placeholder="商品供应商">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="goodsPlace" type="text" class="form-control"
+                                                           placeholder="商品产地">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <select class="form-control form-select" id="goodsKind">
+                                                        <option>类别</option>
+                                                        <option>A</option>
+                                                        <option>B</option>
+                                                        <option>C</option>
+                                                        <option>D</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="销售单价"
+                                                           id="goodsSale">
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control form-select" id="goodsSize">
+                                                        <option>商品规格</option>
+                                                        <option>大</option>
+                                                        <option>中</option>
+                                                        <option>小</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="goodsCode" type="text" class="form-control"
+                                                           placeholder="商品代码">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <input id="costValue" type="text" class="form-control"
+                                                               placeholder="成本价">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <input id="goodsNumber" type="text" class="form-control"
+                                                               placeholder="商品库存">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                        <textarea id="goodsMessage" class="form-control"
+                                                                  placeholder="商品简介:"
+                                                                  rows="4"></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                商品供应商的基本信息-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">商品供应商基本信息</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label class="form-label">供应商名称</label>
+                                                <input type="text" class="form-control" id="supplierName"
+                                                       placeholder="Period">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label class="form-label">供应商编码</label>
+                                                <input type="text" class="form-control" id="supplierCode"
+                                                       placeholder="Period"
+                                                       id="supplierCode">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label class="form-label">联系人</label>
+                                                <input type="text" class="form-control" placeholder="Period"
+                                                       id="contactPerson">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label class="form-label">联系电话</label>
+                                                <input type="text" class="form-control" placeholder="Period"
+                                                       id="phone">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-8">
+                                        <div class="form-group">
+                                                    <textarea class="form-control" placeholder="供应商简介:"
+                                                              rows="10" id="supplierMessage"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <!--                                        点击之后触发增加商品函数，将数据传回后台处理-->
+                                    <div class="form-group text-right">
+                                        <button class="btn btn-primary float-end" id="sub">
+                                            确认增加
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    第四阶段  页面底部设计-->
+    <div class="footer">
+        <div class="copyright">
+            <p class="mb-0">商品管理系统 2022数据库原理实验四</p>
+        </div>
+    </div>
+    <!--  footer -->
+
+
+</div>
+
+
+<!-- JQuery v3.5.1 -->
+<script src="./bigWork/static/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="./bigWork/static/js/bootstrap.min.js"></script>
+
+<!-- Moment -->
+<script src="./bigWork/static/js/moment.min.js"></script>
+<!--引入时间-->
+<script src="bigWork/static/js/daterangepicker.min.js"></script>
+<!-- Main Custom JQuery -->
+<script src="./bigWork/static/js/toggleFullScreen.js"></script>
+<script src="./bigWork/static/js/main.js"></script>
+<!-- 引入jquery库 -->
+<script src="./js/jQuery-2.1.4.min.js"></script>
+
+</body>
+
+</html>
+<script>
+    $.noConflict();
+    $(function () {
+        $('#sub').click(function () {
+            //获取前端商品增加的基本信
+
+            var goodsCode = $("#goodsCode").val();
+            var goodsName = $("#goodsName").val();
+            var goodsPlace = $("#goodsPlace").val();
+            var goodsNumber = $("#goodsNumber").val();
+            var goodsMessage = $("#goodsMessage").val();
+            var goodsKind = $("#goodsKind").val();
+            var goodsSale = $("#goodsSale").val();
+            var costValue = $("#costValue").val();
+            var goodsSize = $("#goodsSize").val();
+            var brandName = $("#brandName").val();
+            //    获取前端页面商品供应商的信息
+            var supplierName = $("#supplierName").val();
+            var supplierCode = $("#supplierCode").val();
+            var contactPerson = $("#contactPerson").val();
+            var phone = $("#phone").val();
+            var supplierMessage = $("#supplierMessage").val();
+            jQuery.ajax({
+                type: "post",
+                url: "addGoodsSupplierServlet",
+                dataType: "json",
+                data: {
+                    "supplierName": supplierName,
+                    "supplierCode": supplierCode,
+                    "contactPerson": contactPerson,
+                    "phone": phone,
+                    "supplierMessage": supplierMessage,
+                    "goodsName": goodsName,
+                    "goodsCode": goodsCode,
+                    "goodsPlace": goodsPlace,
+                    "goodsNumber": goodsNumber,
+                    "goodsMessage": goodsMessage,
+                    "goodsKind": goodsKind,
+                    "goodsSale": goodsSale,
+                    "costValue": costValue,
+                    "goodsSize": goodsSize,
+                    "brandName": brandName
+
+                },
+                success: function (data) {
+                    //data就是我们在servelet中定义的o
+                    if (data.code == "ok") {
+                        alert("添加成功！");
+                        location.href = "addGoods.html";
+                    } else {
+                        alert("添加失败！请重试");
+                    }
+
+                }
+            })
+        })
+    });
+     function intronduce()
+     {
+        alert("重庆交通大学--王松")
+     }
+
+</script>

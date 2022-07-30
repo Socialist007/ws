@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品管理系统</title>
+    <!-- Base Styling  -->
+    <link rel="stylesheet" href="./bigWork/static/css/fonts.css">
+    <link rel="stylesheet" href="./bigWork/static/css/style.css">
+    <!--    jquery-->
+    <!-- JQuery v3.5.1 -->
+    <script src="./bigWork/static/js/jquery.min.js"></script>
+    <!--引入echart绘图组件-->
+    <script src="https://cdn.staticfile.org/echarts/4.5.0/echarts.min.js"></script>
+    <link rel="stylesheet" href="/css/layui.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+        div {
+            text-indent: 2em;
+        }
+
+        p {
+            margin: 1em 0;
+            padding: 0 0 0 2em;
+            text-indent: -1.5em;
+            font: normal normal 16px/1.6em "宋体";
+            color: #000;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <!-- nav部分 -->
+    <div class="nav index">
+        <div class="layui-container">
+            <!-- logo -->
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="data:image/jpeg;base64,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"
+                        width="200px" height="80px" alt="购物logo">
+                </a>
+            </div>
+            <div class="nav-list">
+                <button title="report">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="layui-nav" lay-filter="">
+                    <li class="layui-nav-item layui-this"><a href="report-ws.html">web应用结业报告</a></li>
+                    <li class="layui-nav-item "><a href="addGoods.html">主界面</a></li>
+                    <li class="layui-nav-item "><a href="index.html">退出登录</a></li>
+                    <li class="layui-nav-item"><a href="#"></a></li>
+                    <li class="layui-nav-item"><a href="#"></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="banner grjs" class="nav index" class="layui-container">
+        <div class="title">
+            <p> <b>web应用结业报告</b></p>
+            <p class="en"> <b>王松</b> </p>
+        </div>
+    </div>
+    <!-- 下面是具体内容展示 -->
+    <div class="warper container-fluid">
+        <div class="all-patients main_container">
+
+            <div class="row">
+                <div class="card-body">
+                    <div class="table-responsive">
+
+
+                        <p>
+                        <h3>一、网站简介</h3>
+                        <div>
+                            本项目建设的是一个商品管理网站,目的是方便商城管理商品和订单。网站一共有六个功能分别是商品的新增、
+                            供应商的新增、商品的查询、订单的查询、订单的增加、商品库存量和定期订单数量的统计分析。前端页面的设计主要采用layui、boostrap等前端框架，在以后会学习采用三大框架来帮忙，更好更快地设计页面。<br>
+                        </div>
+
+                        <h4>二、开发过程</h4>
+                        <div>
+                            在本次开发过程中，突发奇想将数据库的最后一个实验与本次作业结合做成一个动态的商品管理网站，很可惜的是最后上传服务器的时候才发现以自己目前的技术只能上传
+                            静态页面，前端页面和最后上传服务区都是利用的git+vscode，后端的话是使用idea。同时在期间遇到很多困难，比如前后端结合的时候使用的是ajax封装传输，这种封装传输的方式交互性能好，能在不刷新整个页面的前提下与服务器通信维护数据
+                            ，减少了等待时间，但是同样相对于设计开发时间长，经常出现数据传输错误，有的时候是js文件错误因为引入了多个js文件，导致方法冲突
+                            甚至有时候提示我没有$这个方法。在不断的调试中，一步一步注释引入文件才发现错误。本次没有采用maven框架的分层思想书写后端，
+                            而是使用了相对熟悉的jdbc连接数据库。jdbc提供了简单，便捷的访问数据库的方法，跨平台性较强，灵活比较强但是连接
+                            数据库的时候通常需要消耗相对较大的资源，创建的时间也较长。相对于maven项目代码的管理较差，使用json格式数据传输的时候接收和发送
+                            对数据的直接处理也较差。<br>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp在前后端结合的时候，对于商品和订单的模糊查询操作直接使用了前端设计框架内的固定表格形式，这样也就不用再去数据库中再去读取数据了
+                            提高了程序搜索功能的处理速度。在开发过程中，没有预先有一个需求基准，做的时候完全凭借的个人经验也没有一个良好的项目时间安排，
+                            在后续过程中，往往随心所至。因为时间限制，只完成了商品、供应商和订单的动态增加，其余的全部是在前端直接设定的。按照要求搭配到服务器，我最初使用的是github但不知道什么原因被标记了以至于别人
+                            不能访问我的仓库，后来选择挂在了室友的服务器上。
+                            对于数据库的设计，首先根据自己设想设计出对应的概率模型即e-r图，再使用powerdesigner转成逻辑模型和物理模型，最后再将sql导入MySQL建立对应数据表。
+                            &nbsp&nbsp&nbsp&nbsp&nbsp在确定商品展示的阶段，我决定采用百叶窗的格式，方便简洁。只是商品的高清图像不是很好找，使用网络图像链接的话，加载就很慢。在本地
+                            文件里的话下载下来展示的不是很清晰。关于商品模型这个想法，我是在了解three.j之后才有的，因为之前的canva绘制图像我不是很中意，更倾向于直接加载3D模型。只是很可惜，直到最后
+                            才有时间去真正的学，以至于现在的商品模型功能只是加载了了一个正方体。
+                        </div>
+                        <h3>三、遇到的问题</h3>
+                        <div>
+                            <ul>
+                                <li>1、忽略了网站功能分析步骤，直接开始上手搭建，搭建过程无章可循，全凭喜好和个人经验</li>
+                                <li>2、项目计划过程粗略，完成过程断断续续</li>
+                                <li>3、后端ajax报错，数据交互失败，文件不能下载</li>
+                                <li>4、引入js文件过多，导致函数方法冲突</li>
+                                <li>5、form表单标签和ajax的冲突</li>
+                                <li>6、从tomcat转到外部服务器</li>
+                                <li>7、前端页面Ui美化程度不够</li>
+                                <li>8、对于文件路径引用错误</li>
+                                <li>9、加载不了动态页面到gitpage，而且账户的github居然被封了，gitee半天申请不下来</li>
+                                <li>10、想使用3D模型展示商品失败</li>
+                            </ul>
+                        </div>
+                        <h3>四、如何解决的问题</h3>
+                        <div>
+                            <ul>
+                                <li>1、针对目标建立需求基准，有目的地入手</li>
+                                <li>2、制定好一个良好的任务时间安排，不要拖太久</li>
+                                <li>3、查看文件的相对位置和绝对位置是否正确，使用网页检查查看网络传输</li>
+                                <li>4、一行一行单独注释js运行，并且将js引入文件放在javascript使用前的第一行</li>
+                                <li>5、form表单本身就具有提交的功能，删除form即可</li>
+                                <li>6、网上百度出gitpage方案，使用vscode+git方法</li>
+                                <li>7、多使用框架，上网查询已经设定好的样式方法</li>
+                                <li>8、不采用直接复制相对路径和绝对路径的方式而是转向手打按提示输入"./"</li>
+                                <li>9、在three.js官网上随便加载了个模型，商品的3D模型需要自己使用3D建模工具构建。网上有一个图像转3D模型的网站但不是很真实</li>
+                            </ul>
+                        </div>
+                        <h3>五、未解决问题</h3>
+                        <div>
+                            <ul>
+                                <li>1、加载不了动态页面到服务器</li>
+                                <li>2、Ajax难以捉摸的报错，时不时提示找不到ajax方法</li>
+                                <li>3、three.js不熟悉，没有完成商品模型的3D展示</li>
+
+                            </ul>
+                        </div>
+                        <h3>六、小结</h3>
+                        <div>
+                            本次实验总的来讲是结合了前后端，但是由于自己技术和知识面有限最后上传到服务区gitpage上面只能展示静态的，而且基于本人web技术的限制没有很好地衔接好前后端再加上时间有限只完成了商品供应商、商品订单和商品的增加，
+                            部分操作依靠没有完成比如删除，搜索主要依靠前端框架自带的搜索功能，这次由于对服务区的不了解从tomcat转到外部服务器的时候只能是静态页面，在之后对整体需要ajax传输提交的方法都进行了微微的修改，数据也是直接设定好了的。在本次的网站制作过程中，我全面运用了本学期学习的web中的各项知识点
+                            包括但不限于html、css以及javascript和javatypescript，接着就开始了动态网页的制作，其中包括了安装jdbc环境和建数据库连接，实现登录、商品和供应商的增加功能。最后建设商品信息维护系统，包括了商品信息输入、修改、查询功能，
+                            并在订单系统中实现订单的搜索与购物等功能。在这次课程之后，我基本掌握了搭建一个网站的基本知识同时也提醒了我有很多地方需要改进，可以采用更前沿更流行的技术去设计一个
+                            更美的界面ui和功能更全的网站。针对一个网站没有一个良好的时间规划的确很麻烦，做着做着就不知道下一步怎么走了，而且有时间的间断性，前面的每次都得回顾一下。在下一次搭建项目之前，我会提前做好一个项目的时间规划和需求基准，不会再出现这种情况。<br>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp在本学期学习了数据库的设计和实践，将web和数据库前后搭配是本学期学习的成果，不过在设计商品管理的数据库时，经常出现依赖关系存在而不能删除的事情，这是对于数据库依赖的五大范式不
+                            熟悉造成的，要想设计良好的数据依赖关系就必须对于数据库更加的熟悉，多多实践，实践出真知。ui界面的美化也是一个问题，脑子想的和做的就不是一回事，需要加强自身美感和美化技术的提高，掌握相关的图像美化软件比如ps，而不是一遇到需要图片
+                            就百度下载不仅不完全符合预期而且还需要自己去掉水印，很麻烦<br>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp
+                            通过web实验，牢固了web课程中学习到的的许多知识点。在学习的过程中，对于各种实验情况的处理，对各种框架的运用，在老师的讲解，同学的帮助终于成功的完成了web本次实验。
+                            本次实验让我受益很大，增加了网页设计和调试的实践经验，掌握了很多基础的东西，夯实了web基础知识，为以后的web方向的发展打下了基础。同时，本次实验也让我对前端更感兴趣了，尤其是WEBGL和three.js，3D模型和网页的交互展示，
+                            也了解到了许多新技术比如2d图像转3D,如何在网页上使用加载3D模型等等。
+                        </div>
+                        </p>
+
+                        <!--                                  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End  -->
+
+
+
+</body>
+
+</html>
